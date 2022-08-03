@@ -34,7 +34,7 @@ public class PageIndexBuffered extends PageIndexIO {
         }
 
         // todo 疑问：整个文件缓存下来，太大了不合适，所以加了偏移值快速定位，但是只根据偏移值去查，每次都会涉及io操作，
-        //  感觉没有直接整个文件缓存下来性价比高，如何取得一个平衡？
+        //  感觉没有直接整个文件缓存下来性价比高，如何取得一个平衡,可以使用多级缓存解决
         Map<Integer, WordIdAndPageIdIndex> unCachedOffsetData = super.getData(offset);
         result.putAll(unCachedOffsetData);
         buffer.putAll(unCachedOffsetData);
